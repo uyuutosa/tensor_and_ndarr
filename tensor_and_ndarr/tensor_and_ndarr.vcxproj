@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{EC111CAA-4C69-44F1-9284-91A77AC57296}</ProjectGuid>
-    <RootNamespace>Project1</RootNamespace>
+    <RootNamespace>tensor_and_ndarr</RootNamespace>
     <ProjectName>tensor_and_ndarr</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
