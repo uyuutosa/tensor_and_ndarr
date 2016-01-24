@@ -8,7 +8,11 @@
 
 
 
-
+/// Tensor like class
+// This class simplyfy calculating of multivaliates
+// with tensor like calclus.
+// The information of tensor-like calclus is indicated
+// there.
 template<typename T>
 class tensor{
 public:
@@ -22,7 +26,8 @@ public:
 	int check_need_dot_product(tensor<T> &obj);
 	void broadcast( tensor<T> &obj, ndarr<T> &arr1, ndarr<T> &arr2, std::string &sum_idx, std::string &sum_ud) ;
 	std::vector<std::string> ud_check(tensor<T> &obj);
-    //included ndarr_operators.cpp------------------------
+
+    //included tensor.cpp------------------------
     tensor<T> operator [](int n);
     tensor<T> operator +(tensor<T> obj);
     tensor<T> operator -(tensor<T> obj);
@@ -100,43 +105,46 @@ tensor<T> tensor<T>::operator +(tensor<T> obj){
    return ret_t;
 }
 
-template<typename T>
-tensor<T> tensor<T>::operator *(tensor<T> obj){
-	std::string sum_idx, sum_ud;
-	ndarr<T> arr1, arr2;
-	tensor<T> ret_t;
-	broadcast(obj, arr1, arr2, sum_idx, sum_ud);
-	switch (check_mul_type(obj, sum_idx,sum_ud)){
-		case 0:
-			ret_t = tensor<T>(arr1 * arr2, sum_idx, sum_ud);
-			break;
-		case 1:
-			for (auto a : ud_check(obj)){
-				std::vector<int> tlst = arg_put_back(idx, a);
-				std::vector<std::string> idx = put_back(idx, a);
-				std::string t_idx, t_ud;
-				
-				for (auto b : tlst){
-					t_idx.push_back(idx[b]);
-					t_ud.push_back(ud[b]);
-				}
-				ret_t = tensor<T>(arr1.transpose(tlst).dot(arr2.transpose(tlst)), t_idx, t_ud);
-				break;
-			}
-	}
-   return ret_t;
-}
+//template<typename T>
+//tensor<T> tensor<T>::operator *(tensor<T> &obj){
+//	std::string sum_idx, sum_ud;
+//	ndarr<T> arr1, arr2;
+//	tensor<T> ret_t;
+//	broadcast(obj, arr1, arr2, sum_idx, sum_ud);
+//	switch (check_need_dot_product(obj)){
+//		case 0:
+//			ret_t = tensor<T>(arr1 * arr2, sum_idx, sum_ud);
+//			break;
+//		case 1:
+//			for (auto a : ud_check(obj)){
+//				std::vector<int> tlst = arg_put_back(idx, a);
+//				std::string idx = put_back(idx, a);
+//				std::string t_idx, t_ud;
+//				
+//				for (auto b : tlst){
+//					t_idx.push_back(idx[b]);
+//					t_ud.push_back(ud[b]);
+//				}
+//				ret_t = tensor<T>(arr1.transpose(tlst).dot(arr2.transpose(tlst)), t_idx, t_ud);
+//				break;
+//			}
+//	}
+//   return ret_t;
+//}
 
 template<typename T>
 int tensor<T>::check_need_dot_product(tensor<T> &obj){
-	for (int i = 0; i < sum_idx.size(); i++)
-		for (int j = 0; j < sum_idx.size(); j++)
-			if (idx[i] == obj.idx[j])
+	for (int i = 0; i < sum_idx.size(); i++){
+		for (int j = 0; j < sum_idx.size(); j++){
+			if (idx[i] == obj.idx[j]){
 				if (ud[i] != obj.ud[j]){
 					transpose(ud[i]);
 					obj.transpose(ud[i]);
 					break;
 				}
+			}
+		}
+	}
 }
 
 template<typename T>

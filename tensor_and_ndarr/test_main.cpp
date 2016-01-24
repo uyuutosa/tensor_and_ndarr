@@ -18,9 +18,9 @@ int main(){
 	tensor<double> d(b, "ik", "dd");
 
 	(c - d).view();
-	(c * d).view();
+	//(c * d).view();
 	(c + d).view();
-	(c / d).view();
+	//(c / d).view();
 
 }
 
