@@ -74,6 +74,29 @@
     <ClInclude Include="utils.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\doc\html\annotated.html" />
+    <None Include="..\doc\html\classes.html" />
+    <None Include="..\doc\html\classndarr-members.html" />
+    <None Include="..\doc\html\classndarr.html" />
+    <None Include="..\doc\html\classtensor-members.html" />
+    <None Include="..\doc\html\classtensor.html" />
+    <None Include="..\doc\html\dir_b0ede550c192e3666789d91505752f8b.html" />
+    <None Include="..\doc\html\dir_c11ec55973eebed723a3bfcd8e7097bf.html" />
+    <None Include="..\doc\html\files.html" />
+    <None Include="..\doc\html\index.html" />
+    <None Include="..\doc\html\ndarr_8h_source.html" />
+    <None Include="..\doc\html\ndarr__broadcast_8h_source.html" />
+    <None Include="..\doc\html\ndarr__decl_8h_source.html" />
+    <None Include="..\doc\html\ndarr__operators_8h_source.html" />
+    <None Include="..\doc\html\search\all_0.html" />
+    <None Include="..\doc\html\search\all_1.html" />
+    <None Include="..\doc\html\search\classes_0.html" />
+    <None Include="..\doc\html\search\classes_1.html" />
+    <None Include="..\doc\html\search\nomatches.html" />
+    <None Include="..\doc\html\tensor_8h_source.html" />
+    <None Include="..\doc\html\test__main_8cpp_source.html" />
+    <None Include="..\doc\html\utils_8hpp_source.html" />
+    <None Include="..\doc\html\util_8h_source.html" />
     <None Include=".output.txt.swp" />
     <None Include=".README.un~" />
     <None Include="a.out" />
